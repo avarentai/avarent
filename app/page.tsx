@@ -11,6 +11,7 @@ import { CTASection } from "@/components/blocks/cta-section";
 import { CalEmbed, CAL_DATA } from "@/components/ui/cal-embed";
 import { WaitlistModal } from "@/components/ui/waitlist-modal";
 import { ContactSalesModal } from "@/components/ui/contact-sales-modal";
+import { PilotFab } from "@/components/ui/pilot-fab";
 
 function Blend({ pull = true }: { pull?: boolean }) {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <CalEmbed />
       <WaitlistModal />
       <ContactSalesModal />
+      <PilotFab />
       <HeroSection
         title="Monitor every AI lending decision before regulators do."
         description="Avarent continuously monitors AI-powered lending decisions, detects disparate impact in real time, generates compliant adverse action notices, and prepares your institution for CFPB examinations without replacing your existing models."
