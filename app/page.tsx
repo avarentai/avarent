@@ -1,6 +1,7 @@
 "use client";
 
 import { HeroSection } from "@/components/blocks/hero-section";
+import { AdverseActionSection } from "@/components/blocks/adverse-action-section";
 import { RegulatoryRiskSection } from "@/components/blocks/regulatory-risk-section";
 import { SolutionFeatures } from "@/components/blocks/solution-features";
 import { HowItWorksSection } from "@/components/blocks/how-it-works-section";
@@ -48,6 +49,8 @@ export default function Home() {
         ]}
       />
       <Blend pull={false} />
+      <AdverseActionSection />
+      <Blend />
       <RegulatoryRiskSection />
       <Blend />
       <SolutionFeatures />
