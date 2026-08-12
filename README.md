@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Avarent site
 
-## Getting Started
+A low-maintenance static site with serverless contact and analytics endpoints.
 
-First, run the development server:
+## Local development
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build` generates the seven routes, search-engine files, bundled JavaScript, favicon, and synthetic evidence PDF in `public/`. `npm run check` verifies the core page structure and required public artifacts.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deploy this directory to Vercel. Configure only the variables needed by the two serverless endpoints:
 
-## Learn More
+- `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL` for contact delivery.
+- `POSTHOG_PROJECT_KEY` and optionally `POSTHOG_HOST` for anonymous conversion events.
 
-To learn more about Next.js, take a look at the following resources:
+Public email routing is intentionally separated: `sales@avarent.app` receives evaluation requests, `enterprise@avarent.app` handles procurement conversations, `security@avarent.app` receives vulnerability reports, and founder diligence can reach George and Lucas directly.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `.env.example` for the expected names. If analytics is not configured, `/api/event` quietly does nothing. If contact delivery fails, the form presents a prefilled email fallback instead of losing the request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Maintenance boundaries
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- There is no newsletter, CMS, blog, user account, or recurring content obligation.
+- The evidence packet is generated from `scripts/build_sample_pdf.mjs`; edit that source and rebuild rather than editing the PDF manually.
+- All site copy lives in `src/pages.mjs`; shared layout and forms live in `src/render.mjs`.
+- Only anonymous, allowlisted conversion events are forwarded. Form values are never included in analytics.
+- The `diligence/` templates convert qualified interest into a scoped, reviewable pilot without requiring a CRM or newsletter.
+- Use `LAUNCH_CHECKLIST.md` for the one-time production and domain steps.
