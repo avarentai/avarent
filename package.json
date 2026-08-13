@@ -18,10 +18,17 @@
   },
   "dependencies": {
     "@fontsource-variable/public-sans": "^5.3.0",
-    "motion-components": "0.5.0"
+    "@paper-design/shaders-react": "^0.0.80",
+    "lucide-react": "^1.31.0",
+    "motion-components": "0.5.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "esbuild": "0.28.2"
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "esbuild": "0.28.2",
+    "typescript": "^7.0.2"
   },
   "engines": {
     "node": ">=20"

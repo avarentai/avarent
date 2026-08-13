@@ -28,6 +28,14 @@ await build({
   format: "esm",
   target: ["es2022"],
 });
+await build({
+  entryPoints: [join(root, "src", "hero.tsx")],
+  outfile: join(out, "hero.js"),
+  bundle: true,
+  minify: true,
+  format: "esm",
+  target: ["es2022"],
+});
 
 const urls = Object.keys(pages).map((route) => `${site.url}${route === "/" ? "" : route}`);
 await writeFile(join(out, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((url) => `<url><loc>${url}</loc><lastmod>2026-08-12</lastmod></url>`).join("")}</urlset>`);

@@ -19,21 +19,24 @@ export const pages = {
       faqSchema,
     ],
     body: `
-      <section class="hero">
-        <div class="hero-layout shell">
-        <div class="hero-copy">
-          <p class="eyebrow">Fair-lending oversight for algorithmic credit</p>
-          <h1>Find decision risk before it becomes an examination problem.</h1>
-          <p class="hero-lede">Avarent helps lending teams measure outcome disparities, investigate explanation risk, and assemble reviewable evidence. It works around your existing underwriting process and can be evaluated first with synthetic data.</p>
-          <div class="button-row">${button("View sample packet", "/sample-evidence-packet.pdf")}${button("Request a scoped review", "#request", "secondary")}</div>
-        </div>
-        <aside class="hero-proof" aria-label="Pilot boundaries">
-          <p>Evaluation boundary</p>
-          <dl><div><dt>Starting data</dt><dd>Synthetic or de-identified</dd></div><div><dt>Model changes</dt><dd>None required</dd></div><div><dt>Decision authority</dt><dd>Remains with your team</dd></div><div><dt>Output</dt><dd>Reviewable evidence, not legal conclusions</dd></div></dl>
-          <a href="/methodology">Read the methodology <span aria-hidden="true">→</span></a>
-        </aside>
-        </div>
-      </section>
+      <div id="avarent-hero-root">
+        <section class="hero-card-section" aria-label="Avarent overview">
+          <div class="hero-card">
+            <div class="hero-shader-fallback" aria-hidden="true"></div>
+            <div class="hero-card-content"><a class="hero-badge" href="/" aria-label="Avarent home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h3M21 5h3a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3h-3"/><path class="hero-badge-decision" d="m16 11 5 5-5 5-5-5 5-5Z"/></svg><span>Avarent</span></a><h1>Find decision risk before it becomes an examination problem.</h1><p>Avarent helps lending teams measure outcome disparities, investigate explanation risk, and assemble evidence a qualified reviewer can inspect.</p><div class="hero-card-actions"><a class="hero-card-cta" href="#request" data-conversion-cta data-cta-label="Hero request"><span>Start with one question</span><span aria-hidden="true">→</span></a><a class="hero-card-link" href="/sample-evidence-packet.pdf" data-sample-packet>Inspect a sample packet <span aria-hidden="true">→</span></a></div><div class="hero-card-boundary" aria-label="Evaluation boundaries"><span>Synthetic data first</span><span>No model changes</span><span>Decisions stay human-owned</span></div></div>
+          </div>
+        </section>
+      </div>
+
+      <nav class="page-directory shell" aria-label="Explore Avarent">
+        <span class="page-directory__label">Explore Avarent</span>
+        <a href="#platform"><small>01</small><span>Platform</span><b aria-hidden="true">↓</b></a>
+        <a href="/methodology"><small>02</small><span>Methodology</span><b aria-hidden="true">→</b></a>
+        <a href="/trust"><small>03</small><span>Trust</span><b aria-hidden="true">→</b></a>
+        <a href="/pilot"><small>04</small><span>Pilot</span><b aria-hidden="true">→</b></a>
+        <a href="/security"><small>05</small><span>Security</span><b aria-hidden="true">→</b></a>
+        <a href="/diligence"><small>06</small><span>Diligence</span><b aria-hidden="true">→</b></a>
+      </nav>
 
       <section class="system-section" aria-labelledby="system-title">
         <div class="shell system-frame">

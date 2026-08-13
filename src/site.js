@@ -24,19 +24,20 @@ const capture = (event, properties = {}) => {
 
 capture("site page viewed");
 
-for (const link of document.querySelectorAll("[data-conversion-cta]")) {
-  link.addEventListener("click", () => capture("primary cta clicked", {
-    placement: link.closest("header") ? "header" : link.closest("form") ? "form" : link.closest(".page-hero") ? "page hero" : link.closest(".hero") ? "home hero" : "page body",
-    label: link.dataset.ctaLabel || link.textContent.trim().slice(0, 60),
-    destination: link.getAttribute("href") || "form submit",
-  }));
-}
+document.addEventListener("click", (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  const conversion = target?.closest("[data-conversion-cta]");
+  if (conversion) capture("primary cta clicked", {
+    placement: conversion.closest("header") ? "header" : conversion.closest("form") ? "form" : conversion.closest(".page-hero") ? "page hero" : conversion.closest(".hero-card") ? "home hero" : "page body",
+    label: conversion.dataset.ctaLabel || conversion.textContent.trim().slice(0, 60),
+    destination: conversion.getAttribute("href") || "form submit",
+  });
 
-for (const link of document.querySelectorAll('a[href="/sample-evidence-packet.pdf"], [data-sample-packet]')) {
-  link.addEventListener("click", () => capture("sample packet opened", {
-    placement: link.closest("footer") ? "footer" : link.closest(".page-hero") ? "page hero" : link.closest(".hero") ? "home hero" : "page body",
-  }));
-}
+  const sample = target?.closest('a[href="/sample-evidence-packet.pdf"], [data-sample-packet]');
+  if (sample) capture("sample packet opened", {
+    placement: sample.closest("footer") ? "footer" : sample.closest(".page-hero") ? "page hero" : sample.closest(".hero-card") ? "home hero" : "page body",
+  });
+});
 
 const menuButton = document.querySelector("[data-menu-button]");
 const mobileNav = document.querySelector("[data-mobile-nav]");

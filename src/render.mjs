@@ -1,4 +1,4 @@
-import { site, primaryNav } from "./site.mjs";
+import { site } from "./site.mjs";
 
 const esc = (value = "") =>
   String(value)
@@ -8,7 +8,7 @@ const esc = (value = "") =>
     .replaceAll('"', "&quot;");
 
 export const button = (label, href, kind = "primary") =>
-  `<a class="button button--${kind}" href="${href}" data-conversion-cta data-cta-label="${esc(label)}">${label}<span aria-hidden="true">↗</span></a>`;
+  `<a class="button button--${kind}" href="${href}" data-conversion-cta data-cta-label="${esc(label)}">${label}<span aria-hidden="true">→</span></a>`;
 
 export const status = (label, tone = "neutral") =>
   `<span class="status status--${tone}"><span aria-hidden="true"></span>${label}</span>`;
@@ -35,15 +35,6 @@ export function inquiryForm(source = "website") {
       </div>
       <div class="form-status" role="status" aria-live="polite" data-form-status></div>
     </form>`;
-}
-
-function header() {
-  return `<header class="site-header">
-    <a class="wordmark" href="/" aria-label="Avarent home">${logoMark()}<span>Avarent</span></a>
-    <nav aria-label="Primary navigation">${primaryNav.map(([name, href]) => `<a href="${href}">${name}</a>`).join("")}<a class="nav-cta" href="/#request" data-conversion-cta data-cta-label="Header request">Request a review</a></nav>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" data-menu-button>Menu</button>
-    <div class="mobile-nav" id="mobile-nav" data-mobile-nav>${primaryNav.map(([name, href]) => `<a href="${href}">${name}</a>`).join("")}<a href="/#request" data-conversion-cta data-cta-label="Mobile request">Request a review</a></div>
-  </header>`;
 }
 
 function footer() {
@@ -96,9 +87,9 @@ export function layout({ title, description, path, body, schemas = [], theme = "
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
-  ${header()}
   <main id="content" data-page="${esc(path)}">${body}</main>
   ${footer()}
+  ${path === "/" ? '<script src="/hero.js" type="module"></script>' : ""}
   <script src="/site.js" type="module"></script>
 </body>
 </html>`;
