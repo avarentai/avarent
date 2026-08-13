@@ -18,6 +18,7 @@ for (const [route, html] of Object.entries(pages)) {
 
 await copyFile(join(root, "src", "styles.css"), join(out, "styles.css"));
 await copyFile(join(root, "src", "og-card.png"), join(out, "og-card.png"));
+await copyFile(join(root, "node_modules", "@fontsource-variable", "public-sans", "files", "public-sans-latin-wght-normal.woff2"), join(out, "public-sans.woff2"));
 await copyFile(join(root, "output", "pdf", "avarent-synthetic-evidence-packet.pdf"), join(out, "sample-evidence-packet.pdf"));
 await build({
   entryPoints: [join(root, "src", "site.js")],

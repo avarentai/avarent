@@ -1,10 +1,3 @@
-import "motion-components/motion-reveal";
-import "motion-components/motion-stagger";
-import "motion-components/motion-press";
-import "motion-components/motion-text-mask";
-import "motion-components/motion-spotlight";
-import "motion-components/motion-progress";
-import { initSilkShader } from "./silk-shader.js";
 
 const analyticsSessionKey = "avarent_analytics_session";
 let analyticsSession = crypto.randomUUID();
@@ -44,8 +37,6 @@ for (const link of document.querySelectorAll('a[href="/sample-evidence-packet.pd
     placement: link.closest("footer") ? "footer" : link.closest(".page-hero") ? "page hero" : link.closest(".hero") ? "home hero" : "page body",
   }));
 }
-
-for (const canvas of document.querySelectorAll("[data-silk-shader]")) initSilkShader(canvas);
 
 const menuButton = document.querySelector("[data-menu-button]");
 const mobileNav = document.querySelector("[data-mobile-nav]");

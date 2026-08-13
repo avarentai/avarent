@@ -20,19 +20,18 @@ export const pages = {
     ],
     body: `
       <section class="hero">
-        <canvas class="hero-silk-canvas" data-silk-shader aria-hidden="true"></canvas>
         <div class="hero-layout shell">
-        <motion-reveal class="hero-copy" y="12" duration="0.55" once>
+        <div class="hero-copy">
           <p class="eyebrow">Fair-lending oversight for algorithmic credit</p>
-          <motion-text-mask duration="0.85" delay="0.08" once><h1>Find decision risk before it becomes an examination problem.</h1></motion-text-mask>
+          <h1>Find decision risk before it becomes an examination problem.</h1>
           <p class="hero-lede">Avarent helps lending teams measure outcome disparities, investigate explanation risk, and assemble reviewable evidence. It works around your existing underwriting process and can be evaluated first with synthetic data.</p>
-          <div class="button-row">${button("View the sample evidence packet", "/sample-evidence-packet.pdf")}${button("Request a scoped review", "#request", "secondary")}</div>
-        </motion-reveal>
-        <motion-reveal class="hero-proof" y="10" delay="0.14" duration="0.5" once aria-label="Pilot boundaries">
+          <div class="button-row">${button("View sample packet", "/sample-evidence-packet.pdf")}${button("Request a scoped review", "#request", "secondary")}</div>
+        </div>
+        <aside class="hero-proof" aria-label="Pilot boundaries">
           <p>Evaluation boundary</p>
           <dl><div><dt>Starting data</dt><dd>Synthetic or de-identified</dd></div><div><dt>Model changes</dt><dd>None required</dd></div><div><dt>Decision authority</dt><dd>Remains with your team</dd></div><div><dt>Output</dt><dd>Reviewable evidence, not legal conclusions</dd></div></dl>
           <a href="/methodology">Read the methodology <span aria-hidden="true">→</span></a>
-        </motion-reveal>
+        </aside>
         </div>
       </section>
 
@@ -43,39 +42,39 @@ export const pages = {
             <h2 id="system-title">A review path your teams can follow.</h2>
             <p>Each step preserves its scope, assumptions, limitations, and human owner.</p>
           </div>
-          <motion-stagger class="system-flow" interval="0.09" duration="0.52" y="12" once>
+          <div class="system-flow">
             <article><span>01</span><small>Decision output</small><strong>Existing model results</strong><i aria-hidden="true">→</i></article>
             <article><span>02</span><small>Cohort measures</small><strong>Disparity screening</strong><i aria-hidden="true">→</i></article>
             <article><span>03</span><small>Finding record</small><strong>Scope + limitations</strong><i aria-hidden="true">→</i></article>
             <article><span>04</span><small>Human review</small><strong>Owned next action</strong><i aria-hidden="true">→</i></article>
             <article><span>05</span><small>Evidence packet</small><strong>Reviewable export</strong></article>
-          </motion-stagger>
+          </div>
         </div>
       </section>
 
-      <motion-stagger class="proof-rail" interval="0.055" duration="0.45" y="8" once aria-label="Evaluation principles"><span>Start outside production</span><span>Human review stays in control</span><span>Limitations are documented</span><span>No certification claims</span></motion-stagger>
+      <div class="proof-rail" aria-label="Evaluation principles"><span>Start outside production</span><span>Human review stays in control</span><span>Limitations are documented</span><span>No certification claims</span></div>
 
       <section class="split-section shell" id="platform">
         <div class="section-heading"><p class="section-index">01 / What it does</p><h2>One evidence trail from decision output to human review.</h2></div>
-        <motion-stagger class="workflow" interval="0.07" duration="0.5" y="12" once>
+        <div class="workflow">
           <article><span>Measure</span><h3>Test outcomes by cohort.</h3><p>Calculate approval-rate and disparity measures against documented reference groups and configurable review thresholds.</p></article>
           <article><span>Investigate</span><h3>Trace the finding.</h3><p>Keep the population, comparison, time window, threshold, and supporting records attached to the result.</p></article>
           <article><span>Explain</span><h3>Review decision reasons.</h3><p>Surface candidate reasons tied to available decision data, while leaving validation and selection with qualified staff.</p></article>
           <article><span>Document</span><h3>Export the evidence.</h3><p>Package methods, findings, reviewer actions, limitations, and version context for internal or third-party review.</p></article>
-        </motion-stagger>
+        </div>
       </section>
 
       <section class="specimen-section">
         <div class="shell specimen-grid">
           <div class="section-heading section-heading--light"><p class="section-index">02 / Illustrative output</p><h2>A finding should explain itself.</h2><p>This sample is illustrative, not a customer result. Every figure is paired with its comparison, scope, threshold, and next review action.</p></div>
-          <motion-spotlight class="specimen-spotlight" size="520" smoothing="0.11" fade-duration="0.35">
+          <div class="specimen-spotlight">
           <div class="evidence-specimen" aria-label="Illustrative disparity finding">
             <h3>Approval-rate disparity crossed the configured review threshold.</h3>
             <div class="metric-line"><strong>0.77</strong><span>adverse impact ratio<br>illustrative cohort</span></div>
             <dl><div><dt>Reference rate</dt><dd>82.4%</dd></div><div><dt>Comparison rate</dt><dd>63.5%</dd></div><div><dt>Window</dt><dd>Jan–Mar sample</dd></div><div><dt>Threshold</dt><dd>0.80 screening rule</dd></div></dl>
             <div class="limitation"><strong>Interpretation boundary</strong><p>A screening threshold is not, by itself, a legal determination. Review population definition, sample size, policy context, and alternative explanations.</p></div>
           </div>
-          </motion-spotlight>
+          </div>
         </div>
       </section>
 
@@ -86,12 +85,12 @@ export const pages = {
 
       <section class="audience-section shell">
         <div class="section-heading"><p class="section-index">03 / Designed for scrutiny</p><h2>Answer each reviewer in their own language.</h2></div>
-        <motion-stagger class="audience-list" interval="0.06" duration="0.5" y="10" once>
+        <div class="audience-list">
           <article><h3>Compliance</h3><p>What happened, which rule or policy is implicated, what is uncertain, and who reviewed it?</p><a href="/methodology">Inspect definitions</a></article>
           <article><h3>Model risk</h3><p>Which population, reference group, metric, version, threshold, and validation boundary produced the result?</p><a href="/methodology">Inspect methods</a></article>
           <article><h3>Security and IT</h3><p>What data is needed, where does it move, who can access it, when is it deleted, and how does the pilot end?</p><a href="/security">Inspect security scope</a></article>
           <article><h3>Procurement</h3><p>What is being purchased, what can fail, what evidence is available, and how does the institution exit?</p><a href="/diligence">Open the diligence packet</a></article>
-        </motion-stagger>
+        </div>
       </section>
 
       <section class="pilot-band">

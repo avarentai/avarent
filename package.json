@@ -10,6 +10,7 @@
     "check": "node scripts/check.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/public-sans": "^5.3.0",
     "motion-components": "0.5.0"
   },
   "devDependencies": {

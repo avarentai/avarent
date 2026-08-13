@@ -8,7 +8,7 @@ const esc = (value = "") =>
     .replaceAll('"', "&quot;");
 
 export const button = (label, href, kind = "primary") =>
-  `<motion-press scale="0.98" duration="0.16"><a class="button button--${kind}" href="${href}" data-conversion-cta data-cta-label="${esc(label)}">${label}<span aria-hidden="true">↗</span></a></motion-press>`;
+  `<a class="button button--${kind}" href="${href}" data-conversion-cta data-cta-label="${esc(label)}">${label}<span aria-hidden="true">↗</span></a>`;
 
 export const status = (label, tone = "neutral") =>
   `<span class="status status--${tone}"><span aria-hidden="true"></span>${label}</span>`;
@@ -96,7 +96,6 @@ export function layout({ title, description, path, body, schemas = [], theme = "
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
-  <motion-progress position="top" color="var(--color-accent)" thickness="2" bounce="0.08" duration="0.45"></motion-progress>
   ${header()}
   <main id="content" data-page="${esc(path)}">${body}</main>
   ${footer()}
