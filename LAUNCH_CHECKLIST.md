@@ -2,10 +2,10 @@
 
 ## Domain and deployment
 
-- [ ] Deploy `avarent-overhaul` to the production Vercel project.
+- [ ] Connect the `avarentai/avarent` repository to the production Render web service.
 - [ ] Point `avarent.app` and `www.avarent.app` at the deployment.
 - [ ] Choose one canonical host and redirect the other.
-- [ ] Confirm HTTPS and the response headers in `vercel.json`.
+- [ ] Confirm HTTPS and the response headers emitted by `scripts/serve.mjs`.
 - [ ] Test all eight routes, the sample PDF, favicon, sitemap, robots file, `llms.txt`, and `security.txt` in production.
 
 ## Email delivery
@@ -15,12 +15,12 @@
 - [ ] Publish the provider's SPF and DKIM records.
 - [ ] Publish a DMARC policy and reporting address appropriate for the domain.
 - [ ] Confirm delivery to `sales@`, `enterprise@`, `security@`, `george@`, and `lucas@`.
-- [ ] Set `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` in Vercel.
+- [ ] Set `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, and `CONTACT_TO_EMAIL` in Render.
 - [ ] Submit a real website inquiry and confirm reply-to points to the prospect.
 
 ## Analytics
 
-- [ ] Set `POSTHOG_PROJECT_KEY` in Vercel.
+- [ ] Set `POSTHOG_PROJECT_KEY` in Render.
 - [ ] Confirm the website conversion dashboard receives a page view, sample open, form start, and test submission.
 - [ ] Confirm no email, institution, question text, or other form value appears in PostHog.
 

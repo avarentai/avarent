@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: avarent-site
+    runtime: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: RESEND_API_KEY
+        sync: false
+      - key: CONTACT_FROM_EMAIL
+        value: Avarent <sales@avarent.app>
+      - key: CONTACT_TO_EMAIL
+        value: sales@avarent.app
+      - key: POSTHOG_PROJECT_KEY
+        sync: false
+      - key: POSTHOG_HOST
+        value: https://us.i.posthog.com

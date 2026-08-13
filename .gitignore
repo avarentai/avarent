@@ -1,7 +1,6 @@
 node_modules/
 public/
 output/
-.vercel/
 .env
 .env.*
 !.env.example
