@@ -10,7 +10,7 @@ export const site = {
     security: "security@avarent.app",
   },
   description:
-    "Avarent helps lending teams evaluate fairness, explanation, and model-risk evidence for AI and algorithmic credit decisions.",
+    "Avarent helps lending teams find disparate outcomes, investigate findings, and produce review-ready evidence for AI and algorithmic credit decisions.",
 };
 
 export const primaryNav = [
@@ -62,9 +62,5 @@ export const faq = [
   [
     "What can a reviewer inspect before a pilot?",
     "The methodology, metric definitions, limitations, sample output, proposed data flow, pilot boundaries, and security questionnaire responses can be reviewed before non-synthetic data is introduced.",
-  ],
-  [
-    "How is founder age handled?",
-    "Avarent was founded by two 17-year-old builders. We disclose that plainly. We do not ask an institution to treat youth as proof. We ask evaluators to judge the product, methods, documentation, and deliberately limited pilot scope.",
   ],
 ];

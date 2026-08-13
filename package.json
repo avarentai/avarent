@@ -14,6 +14,8 @@
     "outreach:sync": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs sync",
     "outreach:drafts": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs drafts",
     "outreach:followups": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs followups",
+    "outreach:auto-followups": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs auto-followups",
+    "outreach:auto": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs auto-outreach",
     "outreach:run": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs run"
   },
   "dependencies": {

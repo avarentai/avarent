@@ -181,22 +181,35 @@ async function listAccounts() {
   for (const account of accounts) console.log(`${account.accountId || account.accountID || "unknown"}\t${account.primaryEmailAddress || account.emailAddress || account.accountName || ""}`);
 }
 
+function messagePayload(lead, body, mode = "send") {
+  return {
+    ...(mode === "draft" ? { mode: "draft" } : {}),
+    fromAddress: env("ZOHO_FROM_EMAIL"),
+    toAddress: lead.Email,
+    subject: subjectFor(lead),
+    content: body,
+    mailFormat: "plaintext",
+    askReceipt: "no",
+    encoding: "UTF-8",
+  };
+}
+
 async function createDraft(lead, body) {
   requireEnv(["ZOHO_ACCOUNT_ID", "ZOHO_FROM_EMAIL"]);
   const payload = await zohoRequest(`/accounts/${encodeURIComponent(env("ZOHO_ACCOUNT_ID"))}/messages`, {
     method: "POST",
-    body: JSON.stringify({
-      mode: "draft",
-      fromAddress: env("ZOHO_FROM_EMAIL"),
-      toAddress: lead.Email,
-      subject: subjectFor(lead),
-      content: body,
-      mailFormat: "plaintext",
-      askReceipt: "no",
-      encoding: "UTF-8",
-    }),
+    body: JSON.stringify(messagePayload(lead, body, "draft")),
   });
   return payload.data?.messageId || payload.data?.draftId || payload.data?.mailId || "created";
+}
+
+async function sendMessage(lead, body) {
+  requireEnv(["ZOHO_ACCOUNT_ID", "ZOHO_FROM_EMAIL"]);
+  const payload = await zohoRequest(`/accounts/${encodeURIComponent(env("ZOHO_ACCOUNT_ID"))}/messages`, {
+    method: "POST",
+    body: JSON.stringify(messagePayload(lead, body)),
+  });
+  return payload.data?.messageId || payload.data?.mailId || "sent";
 }
 
 async function searchMessages(searchKey) {
@@ -286,6 +299,59 @@ async function createFollowupDrafts(leads, previewOnly = false) {
   return created;
 }
 
+async function sendDueFollowups(leads, limit = Number(env("OUTREACH_DAILY_SEND_CAP", "8"))) {
+  const now = Date.now();
+  const cap = Math.max(0, Number(limit) || 0);
+  let sent = 0;
+  for (const lead of leads) {
+    if (String(lead.Status || "").toUpperCase() !== "CONTACTED" || sent >= cap) continue;
+    const currentStep = Number(lead["Sequence Step"] || 0);
+    const due = new Date(lead["Next Action At"] || 0).getTime();
+    if (![1, 2].includes(currentStep) || !due || due > now || lead["Draft ID"]) continue;
+
+    const nextStep = currentStep + 1;
+    const followupLead = { ...lead, Subject: `Re: ${lead.Subject.replace(/^Re:\s*/i, "")}` };
+    await sendMessage(followupLead, followupMessage(lead, nextStep));
+
+    const sentAt = new Date().toISOString();
+    lead.Status = "CONTACTED";
+    lead["Sequence Step"] = String(nextStep);
+    lead["Last Sent At"] = sentAt;
+    lead["Draft ID"] = "";
+    lead["Next Action At"] = nextStep === 2
+      ? addBusinessDays(sentAt, env("OUTREACH_FOLLOWUP_2_BUSINESS_DAYS", "7"))
+      : "";
+    console.log(`Sent follow-up ${nextStep - 1} to ${lead.Email}`);
+    sent += 1;
+  }
+  return sent;
+}
+
+async function sendQualifiedInitials(leads, limit = Number(env("OUTREACH_DAILY_SEND_CAP", "8"))) {
+  const now = new Date().toISOString();
+  const cap = Math.max(0, Number(limit) || 0);
+  let sent = 0;
+  for (const lead of leads) {
+    if (String(lead.Status || "").toUpperCase() !== "READY" || sent >= cap) continue;
+    const missing = validateLead(lead);
+    if (missing.length) {
+      console.warn(`Skipped ${lead.Institution || lead.Email || "row"}: missing ${missing.join(", ")}`);
+      continue;
+    }
+
+    lead.Subject = subjectFor(lead);
+    await sendMessage(lead, initialMessage(lead));
+    lead.Status = "CONTACTED";
+    lead["Sequence Step"] = "1";
+    lead["Last Sent At"] = now;
+    lead["Next Action At"] = addBusinessDays(now, env("OUTREACH_FOLLOWUP_1_BUSINESS_DAYS", "4"));
+    lead["Draft ID"] = "";
+    console.log(`Sent initial outreach to ${lead.Email}`);
+    sent += 1;
+  }
+  return sent;
+}
+
 function checkLocal(leads) {
   const counts = {};
   const seen = new Map();
@@ -316,6 +382,22 @@ async function main() {
   if (COMMAND === "sync") { console.log(`Updated ${await syncLeads(leads)} lead(s)`); await saveLeads(leads); return; }
   if (COMMAND === "drafts") { console.log(`Created ${await createInitialDrafts(leads)} draft(s)`); await saveLeads(leads); return; }
   if (COMMAND === "followups") { console.log(`Created ${await createFollowupDrafts(leads)} follow-up draft(s)`); await saveLeads(leads); return; }
+  if (COMMAND === "auto-followups") {
+    const updated = await syncLeads(leads);
+    const sent = await sendDueFollowups(leads);
+    await saveLeads(leads);
+    console.log(JSON.stringify({ updated, followupsSent: sent }));
+    return;
+  }
+  if (COMMAND === "auto-outreach") {
+    const updated = await syncLeads(leads);
+    const dailyCap = Math.max(1, Number(env("OUTREACH_DAILY_SEND_CAP", "8")) || 8);
+    const followupsSent = await sendDueFollowups(leads, dailyCap);
+    const initialsSent = await sendQualifiedInitials(leads, dailyCap - followupsSent);
+    await saveLeads(leads);
+    console.log(JSON.stringify({ updated, initialsSent, followupsSent }));
+    return;
+  }
   if (COMMAND === "run") {
     const updated = await syncLeads(leads);
     const initial = await createInitialDrafts(leads);
@@ -324,7 +406,7 @@ async function main() {
     console.log(JSON.stringify({ updated, initialDrafts: initial, followupDrafts: followups }));
     return;
   }
-  console.log("Usage: node zoho-outreach.mjs <check|preview|accounts|sync|drafts|followups|run>");
+  console.log("Usage: node zoho-outreach.mjs <check|preview|accounts|sync|drafts|followups|auto-followups|auto-outreach|run>");
 }
 
 main().catch((error) => { console.error(error.message); process.exitCode = 1; });

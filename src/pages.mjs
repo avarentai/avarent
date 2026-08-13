@@ -11,8 +11,8 @@ const faqMarkup = faq.map(([question, answer], index) => `<details${index === 0 
 
 export const pages = {
   "/": layout({
-    title: "Avarent | Fair-lending evidence for AI credit decisions",
-    description: "Evaluate disparity, adverse-action explanation, and model-risk evidence without replacing your underwriting model or beginning with production data.",
+    title: "Avarent | Find lending disparities and package the evidence",
+    description: "Find disparate lending outcomes, investigate the drivers behind a finding, and give compliance and model-risk teams review-ready evidence.",
     path: "/",
     schemas: [
       { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Avarent", applicationCategory: "BusinessApplication", operatingSystem: "Web", description: site.description },
@@ -23,42 +23,30 @@ export const pages = {
         <section class="hero-card-section" aria-label="Avarent overview">
           <div class="hero-card">
             <div class="hero-shader-fallback" aria-hidden="true"></div>
-            <div class="hero-card-content"><a class="hero-badge" href="/" aria-label="Avarent home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h3M21 5h3a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3h-3"/><path class="hero-badge-decision" d="m16 11 5 5-5 5-5-5 5-5Z"/></svg><span>Avarent</span></a><h1>Find decision risk before it becomes an examination problem.</h1><p>Avarent helps lending teams measure outcome disparities, investigate explanation risk, and assemble evidence a qualified reviewer can inspect.</p><div class="hero-card-actions"><a class="hero-card-cta" href="#request" data-conversion-cta data-cta-label="Hero request"><span>Start with one question</span><span aria-hidden="true">→</span></a><a class="hero-card-link" href="/sample-evidence-packet.pdf" data-sample-packet>Inspect a sample packet <span aria-hidden="true">→</span></a></div><div class="hero-card-boundary" aria-label="Evaluation boundaries"><span>Synthetic data first</span><span>No model changes</span><span>Decisions stay human-owned</span></div></div>
+            <div class="hero-card-content"><a class="hero-badge" href="/" aria-label="Avarent home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h3M21 5h3a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3h-3"/><path class="hero-badge-decision" d="m16 11 5 5-5 5-5-5 5-5Z"/></svg><span>Avarent</span></a><h1>Find disparate lending outcomes. Package the evidence.</h1><p>Measure where decisions diverge, investigate the drivers behind a finding, and give compliance and model-risk teams a review-ready record.</p><div class="hero-card-actions"><a class="hero-card-cta" href="/sample-evidence-packet.pdf" data-sample-packet><span>See the evidence</span><span aria-hidden="true">→</span></a><a class="hero-card-link" href="#request" data-conversion-cta data-cta-label="Hero request">Scope one review <span aria-hidden="true">→</span></a></div><div class="hero-card-outcomes" aria-label="Avarent outcomes"><span>Spot disparate outcomes</span><span>Investigate the finding</span><span>Export review-ready evidence</span></div></div>
           </div>
         </section>
       </div>
 
-      <nav class="page-directory shell" aria-label="Explore Avarent">
-        <span class="page-directory__label">Explore Avarent</span>
-        <a href="#platform"><small>01</small><span>Platform</span><b aria-hidden="true">↓</b></a>
-        <a href="/methodology"><small>02</small><span>Methodology</span><b aria-hidden="true">→</b></a>
-        <a href="/trust"><small>03</small><span>Trust</span><b aria-hidden="true">→</b></a>
-        <a href="/pilot"><small>04</small><span>Pilot</span><b aria-hidden="true">→</b></a>
-        <a href="/security"><small>05</small><span>Security</span><b aria-hidden="true">→</b></a>
-        <a href="/diligence"><small>06</small><span>Diligence</span><b aria-hidden="true">→</b></a>
-      </nav>
-
       <section class="system-section" aria-labelledby="system-title">
         <div class="shell system-frame">
           <div class="system-heading">
-            <p class="section-index">From output to evidence</p>
-            <h2 id="system-title">A review path your teams can follow.</h2>
-            <p>Each step preserves its scope, assumptions, limitations, and human owner.</p>
+            <p class="section-index">Why it matters</p>
+            <h2 id="system-title">A disparity only matters if your team can act on it.</h2>
+            <p>Avarent turns one decision question into a finding your teams can understand, challenge, and use.</p>
           </div>
           <div class="system-flow">
-            <article><span>01</span><small>Decision output</small><strong>Existing model results</strong><i aria-hidden="true">→</i></article>
-            <article><span>02</span><small>Cohort measures</small><strong>Disparity screening</strong><i aria-hidden="true">→</i></article>
-            <article><span>03</span><small>Finding record</small><strong>Scope + limitations</strong><i aria-hidden="true">→</i></article>
-            <article><span>04</span><small>Human review</small><strong>Owned next action</strong><i aria-hidden="true">→</i></article>
-            <article><span>05</span><small>Evidence packet</small><strong>Reviewable export</strong></article>
+            <article><span>01</span><small>Detect</small><strong>See where lending outcomes diverge.</strong><i aria-hidden="true">→</i></article>
+            <article><span>02</span><small>Investigate</small><strong>Trace the population, window, inputs, and candidate reasons.</strong><i aria-hidden="true">→</i></article>
+            <article><span>03</span><small>Deliver</small><strong>Give reviewers a reproducible evidence packet.</strong></article>
           </div>
         </div>
       </section>
 
-      <div class="proof-rail" aria-label="Evaluation principles"><span>Start outside production</span><span>Human review stays in control</span><span>Limitations are documented</span><span>No certification claims</span></div>
+      <div class="proof-rail" aria-label="Fixed-scope evaluation"><span>One evaluation question</span><span>One reproducible finding</span><span>One evidence packet</span><span>Ten-business-day delivery</span></div>
 
       <section class="split-section shell" id="platform">
-        <div class="section-heading"><p class="section-index">01 / What it does</p><h2>One evidence trail from decision output to human review.</h2></div>
+        <div class="section-heading"><p class="section-index">01 / What it does</p><h2>Move from a signal to a defensible next action.</h2></div>
         <div class="workflow">
           <article><span>Measure</span><h3>Test outcomes by cohort.</h3><p>Calculate approval-rate and disparity measures against documented reference groups and configurable review thresholds.</p></article>
           <article><span>Investigate</span><h3>Trace the finding.</h3><p>Keep the population, comparison, time window, threshold, and supporting records attached to the result.</p></article>
@@ -86,8 +74,18 @@ export const pages = {
         <div><p>Open a four-page synthetic packet containing a disparity finding, calculation context, traceable record, reviewer checklist, limitations, and export manifest. It is illustrative and contains no customer data.</p><div class="button-row">${button("Open the synthetic sample", "/sample-evidence-packet.pdf")}${button("Read the methodology", "/methodology", "secondary")}</div></div>
       </section>
 
+      <nav class="page-directory shell" aria-label="Explore Avarent">
+        <span class="page-directory__label">Go deeper when you need to</span>
+        <a href="#platform"><small>01</small><span>Platform</span><b aria-hidden="true">↑</b></a>
+        <a href="/methodology"><small>02</small><span>Methodology</span><b aria-hidden="true">→</b></a>
+        <a href="/trust"><small>03</small><span>Trust</span><b aria-hidden="true">→</b></a>
+        <a href="/pilot"><small>04</small><span>Pilot</span><b aria-hidden="true">→</b></a>
+        <a href="/security"><small>05</small><span>Security</span><b aria-hidden="true">→</b></a>
+        <a href="/diligence"><small>06</small><span>Diligence</span><b aria-hidden="true">→</b></a>
+      </nav>
+
       <section class="audience-section shell">
-        <div class="section-heading"><p class="section-index">03 / Designed for scrutiny</p><h2>Answer each reviewer in their own language.</h2></div>
+        <div class="section-heading"><p class="section-index">03 / Built for the buying committee</p><h2>Give every reviewer the answer they need.</h2></div>
         <div class="audience-list">
           <article><h3>Compliance</h3><p>What happened, which rule or policy is implicated, what is uncertain, and who reviewed it?</p><a href="/methodology">Inspect definitions</a></article>
           <article><h3>Model risk</h3><p>Which population, reference group, metric, version, threshold, and validation boundary produced the result?</p><a href="/methodology">Inspect methods</a></article>
@@ -97,19 +95,19 @@ export const pages = {
       </section>
 
       <section class="pilot-band">
-        <div class="shell pilot-band-grid"><div><p class="section-index">04 / The low-risk path</p><h2>Evaluate usefulness before expanding trust.</h2></div><ol><li><span>1</span><div><strong>Inspect</strong><p>Review methods, sample outputs, limitations, and proposed controls.</p></div></li><li><span>2</span><div><strong>Run synthetic</strong><p>Use representative, non-production data to test whether the output is useful.</p></div></li><li><span>3</span><div><strong>Scope deliberately</strong><p>Only then agree fields, retention, access, deletion, success criteria, and exit.</p></div></li></ol>${button("See the full pilot plan", "/pilot", "light")}</div>
+        <div class="shell pilot-band-grid"><div><p class="section-index">04 / The first engagement</p><h2>Start narrow. Prove value. Then expand.</h2></div><ol><li><span>1</span><div><strong>Choose the question</strong><p>Define the workflow, outcome, population, comparison, and useful decision.</p></div></li><li><span>2</span><div><strong>Run the review</strong><p>Test whether the finding is reproducible, clear, and useful to your team.</p></div></li><li><span>3</span><div><strong>Receive the evidence</strong><p>Leave with the packet, exports, limitations, and a concrete next decision.</p></div></li></ol>${button("See the full pilot plan", "/pilot", "light")}</div>
       </section>
 
-      <section class="faq-section shell"><div class="section-heading"><p class="section-index">05 / Direct answers</p><h2>Questions a skeptical evaluator should ask.</h2></div><div class="faq-list">${faqMarkup}</div></section>
+      <section class="faq-section shell"><div class="section-heading"><p class="section-index">05 / Direct answers</p><h2>What buyers ask before moving forward.</h2></div><div class="faq-list">${faqMarkup}</div></section>
 
-      <section class="contact-section shell" id="request"><div><p class="section-index">06 / A concrete next step</p><h2>Bring one real evaluation question.</h2><p>A scoped review is not a pilot commitment. We will respond with the proposed method, minimum inputs, available evidence, limitations, and the next decision. No payment or production access is requested through this form.</p></div>${inquiryForm("homepage")}</section>`,
+      <section class="contact-section shell" id="request"><div><p class="section-index">06 / A concrete next step</p><h2>Bring one real evaluation question.</h2><p>Tell us the lending workflow and the decision you need to make. We will return a proposed method, minimum inputs, deliverables, and a clear next step.</p></div>${inquiryForm("homepage")}</section>`,
   }),
 
   "/pilot": layout({
     title: "Avarent synthetic fair-lending review | Fixed-scope pilot",
     description: "Bring one lending evaluation question. Receive a reproducible finding, evidence packet, and stakeholder readout through a $2,500 synthetic-first review.",
     path: "/pilot",
-    body: `<section class="page-hero page-hero--conversion shell"><p class="eyebrow">Synthetic fair-lending evidence review</p><h1>One question. One evidence packet. Ten business days.</h1><p>Test whether Avarent produces evidence your compliance and model-risk teams can challenge and use, without replacing the decision model or beginning with production integration.</p><div class="button-row">${button("Inspect the sample output", "/sample-evidence-packet.pdf")}${button("Scope one question", "#request", "secondary")}</div><div class="offer-summary" aria-label="Fixed-scope review terms"><div><strong>Scope</strong><span>One workflow and one agreed evaluation question.</span></div><div><strong>Delivery</strong><span>Evidence packet and readout within 10 business days of accepted inputs.</span></div><div><strong>Price</strong><span>$2,500 fixed. Half at scope acceptance, half at delivery.</span></div></div></section>
+    body: `<section class="page-hero page-hero--conversion shell"><p class="eyebrow">Synthetic fair-lending evidence review</p><h1>One question. One evidence packet. Ten business days.</h1><p>Test whether Avarent produces evidence your compliance and model-risk teams can challenge and use, without replacing the decision model or beginning with production integration.</p><div class="button-row">${button("Inspect the sample output", "/sample-evidence-packet.pdf")}${button("Scope one question", "#request", "secondary")}</div><div class="offer-summary" aria-label="Fixed-scope review terms"><div><strong>Scope</strong><span>One workflow and one agreed evaluation question.</span></div><div><strong>Delivery</strong><span>Evidence packet and readout within 10 business days of accepted inputs.</span></div><div><strong>Founding evaluation terms</strong><span>$2,500 fixed during Avarent’s initial institutional evaluation period. Half at scope acceptance and half at delivery.</span></div></div></section>
       <section class="document shell"><div class="document-nav"><strong>Review terms</strong><a href="#stages">What happens</a><a href="#boundaries">Scope and deliverables</a><a href="#success">Success criteria</a><a href="#request">Scope a question</a></div><div class="document-body">
         <section id="stages"><h2>A finite review, with an exit at each stage.</h2><ol class="stage-list"><li><span>01</span><div><h3>Scope the question</h3><p>In a no-charge conversation, define one workflow, outcome, population, comparison, time window, and useful decision. Avarent returns the proposed method, minimum inputs, exclusions, and success criteria before requesting data or payment.</p><strong>Exit condition:</strong> the question or method is not a fit.</div></li><li><span>02</span><div><h3>Run the evidence review</h3><p>Use one synthetic or institution-approved de-identified extract. Avarent documents the configuration, reproduces the agreed measures, records findings, and makes limitations visible.</p><strong>Exit condition:</strong> the inputs are unsuitable or the output is not reproducible.</div></li><li><span>03</span><div><h3>Deliver and decide</h3><p>Receive the evidence packet, agreed exports, and a 45-minute stakeholder readout. Your team decides whether a limited next-stage pilot is justified.</p><strong>Exit condition:</strong> delivery completes the review; expansion is never automatic.</div></li></ol></section>
         <section id="boundaries"><h2>Scope and deliverables</h2><div class="evidence-table"><div><strong>Inputs</strong><span>One agreed tabular extract, data dictionary, outcome definition, comparison cohorts, and time window</span></div><div><strong>Starting data</strong><span>Synthetic or institution-approved de-identified data</span></div><div><strong>Deliverables</strong><span>Configuration note, disparity screen, finding record, limitations, evidence packet, export, and stakeholder readout</span></div><div><strong>Production integration</strong><span>Not included or required</span></div><div><strong>Decision authority</strong><span>Remains with the institution</span></div><div><strong>Commercial terms</strong><span>$2,500 fixed; 50% at written scope acceptance and 50% at delivery</span></div><div><strong>Public reference</strong><span>Never assumed; separate written permission is required</span></div></div></section>
