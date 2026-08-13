@@ -318,6 +318,18 @@ details p { color: var(--color-ink-2); margin: 0 0 var(--space-lg); }
 .reference-list a { display: grid; grid-template-columns: .85fr 1fr auto; gap: var(--space-lg); align-items: start; padding: var(--space-lg) 0; border-bottom: 1px solid var(--color-rule); text-decoration: none; }
 .reference-list small { display: block; color: var(--color-ink-2); margin-top: .3rem; }
 .reference-list p { margin: 0; }
+.answer-grid { margin-top: var(--space-xl); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--color-ink); }
+.answer-grid div { min-width: 0; padding: var(--space-lg) var(--space-lg) var(--space-lg) 0; display: grid; gap: var(--space-xs); border-bottom: 1px solid var(--color-rule); }
+.answer-grid div:nth-child(odd) { border-right: 1px solid var(--color-rule); }
+.answer-grid div:nth-child(even) { padding-left: var(--space-lg); }
+.answer-grid span { color: var(--color-ink-2); }
+.glossary { padding-block: var(--space-xl) var(--space-4xl); }
+.glossary-list { margin: 0; border-top: 1px solid var(--color-ink); }
+.glossary-list > div { display: grid; grid-template-columns: minmax(12rem, .7fr) minmax(0, 1.3fr); gap: var(--space-xl); padding: var(--space-xl) 0; border-bottom: 1px solid var(--color-rule); scroll-margin-top: var(--space-xl); }
+.glossary-list dt { font-size: var(--text-lg); font-weight: 650; line-height: 1.2; }
+.glossary-list dfn { font-style: normal; }
+.glossary-list dd { margin: 0; max-width: 70ch; color: var(--color-ink-2); }
+.glossary-source { margin-top: var(--space-xl); color: var(--color-ink-2); }
 
 .trust-matrix { padding-block: var(--space-3xl); }
 .trust-row { display: grid; grid-template-columns: minmax(10rem, .55fr) minmax(8rem, .3fr) minmax(16rem, 1.25fr); gap: var(--space-lg); align-items: start; padding: var(--space-lg) 0; border-bottom: 1px solid var(--color-rule); }
@@ -435,6 +447,9 @@ details p { color: var(--color-ink-2); margin: 0 0 var(--space-lg); }
   .formula i { transform: rotate(90deg); width: max-content; }
   .reference-list a { grid-template-columns: 1fr auto; }
   .reference-list a p { grid-column: 1 / -1; }
+  .answer-grid, .glossary-list > div { grid-template-columns: 1fr; }
+  .answer-grid div:nth-child(odd) { border-right: 0; }
+  .answer-grid div:nth-child(even) { padding-left: 0; }
   .site-footer { grid-template-columns: 1fr; }
   .site-footer > div:first-child { grid-column: 1; }
   .button-row .button { width: 100%; }

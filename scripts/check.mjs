@@ -2,7 +2,7 @@ import { access, readFile } from "node:fs/promises";
 import { pages } from "../src/pages.mjs";
 
 let failures = 0;
-const knownPaths = new Set([...Object.keys(pages), "/sample-evidence-packet.pdf", "/favicon.svg", "/styles.css"]);
+const knownPaths = new Set([...Object.keys(pages), "/sample-evidence-packet.pdf", "/sitemap.xml", "/favicon.svg", "/styles.css"]);
 for (const [route, html] of Object.entries(pages)) {
   const label = route || "/";
   const rules = [

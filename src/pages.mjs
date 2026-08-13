@@ -15,7 +15,27 @@ export const pages = {
     description: "Find disparate lending outcomes, investigate the drivers behind a finding, and give compliance and model-risk teams review-ready evidence.",
     path: "/",
     schemas: [
-      { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "Avarent", applicationCategory: "BusinessApplication", operatingSystem: "Web", description: site.description },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": `${site.url}/#software`,
+        name: "Avarent",
+        url: site.url,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: site.description,
+        provider: { "@id": `${site.url}/#organization` },
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "Banks, credit unions, and lending fintechs",
+        },
+        featureList: [
+          "Fair-lending outcome measurement",
+          "Disparity finding investigation",
+          "Adverse-action reason review support",
+          "Review-ready evidence packet export",
+        ],
+      },
       faqSchema,
     ],
     body: `
@@ -103,10 +123,105 @@ export const pages = {
       <section class="contact-section shell" id="request"><div><p class="section-index">06 / A concrete next step</p><h2>Bring one real evaluation question.</h2><p>Tell us the lending workflow and the decision you need to make. We will return a proposed method, minimum inputs, deliverables, and a clear next step.</p></div>${inquiryForm("homepage")}</section>`,
   }),
 
+  "/ai-credit-fair-lending-review": layout({
+    title: "Evaluate AI credit decisions for fair-lending risk | Avarent",
+    description: "A practical guide to reviewing AI and algorithmic credit decisions for disparate outcomes, decision reasons, governance, and reproducible evidence.",
+    path: "/ai-credit-fair-lending-review",
+    schemas: [{
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: "How to evaluate AI credit decisions for fair-lending risk",
+      description: "A practical guide to reviewing AI and algorithmic credit decisions for disparate outcomes, decision reasons, governance, and reproducible evidence.",
+      author: { "@id": `${site.url}/#organization` },
+      publisher: { "@id": `${site.url}/#organization` },
+      datePublished: "2026-08-13",
+      dateModified: site.contentUpdated,
+      mainEntityOfPage: `${site.url}/ai-credit-fair-lending-review`,
+      about: ["Fair lending", "Artificial intelligence", "Credit decisioning", "Model risk management"],
+    }],
+    body: `<section class="page-hero shell"><p class="eyebrow">AI credit fair-lending review guide</p><h1>How should lenders evaluate AI credit decisions for fair-lending risk?</h1><p>A useful review does more than calculate a disparity metric. It defines the decision population, tests outcomes across documented cohorts, investigates the context behind material findings, checks whether stated decision reasons are supported, and preserves a record a qualified reviewer can reproduce.</p><p class="updated">Avarent guide · reviewed ${site.contentUpdated}</p></section>
+      <article class="document shell"><nav class="document-nav" aria-label="Guide contents"><strong>Contents</strong><a href="#answer">Direct answer</a><a href="#measure">What to measure</a><a href="#evidence">Evidence packet</a><a href="#sequence">Review sequence</a><a href="#owners">Who should review</a><a href="#sources">Primary sources</a></nav><div class="document-body">
+        <section id="answer"><h2>Direct answer</h2><p>An AI credit-decision review should answer five questions: What decision was made? Which population and comparison groups were evaluated? Where did outcomes diverge? What data and candidate reasons help explain the finding? What evidence and human action were recorded afterward?</p><div class="answer-grid" aria-label="Five review questions"><div><strong>Decision</strong><span>Which workflow, outcome, product, and period are in scope?</span></div><div><strong>Population</strong><span>Which applicants or accounts are included, excluded, and compared?</span></div><div><strong>Outcome</strong><span>Which rates, gaps, thresholds, and uncertainty checks were calculated?</span></div><div><strong>Context</strong><span>Which inputs, policy choices, and alternative explanations require review?</span></div><div><strong>Evidence</strong><span>Can a qualified reviewer reproduce the finding and see the next action?</span></div></div></section>
+        <section id="measure"><h2>What should be measured?</h2><p>Start with the actual decision outcome, not a generic model score. Depending on the workflow, useful measures can include favorable-outcome rates, adverse impact ratio, statistical parity difference, pricing or term differences, exception patterns, and the stability of results across time windows. Every measure should retain its population definition, comparison group, denominator, exclusions, configuration, and interpretation limits.</p><p>A threshold crossing is a screening signal. It does not identify cause or establish a legal conclusion by itself. Sample size, missing or inferred demographic attributes, reference-group selection, policy context, and statistical uncertainty can materially change the interpretation.</p><p><a href="/methodology">See Avarent's formulas and interpretation limits.</a></p></section>
+        <section id="evidence"><h2>What belongs in a reviewable evidence packet?</h2><ul class="plain-list"><li>The evaluation question, workflow, outcome, population, comparison group, and time window.</li><li>The data fields used, excluded, derived, missing, or inferred.</li><li>The metric definitions, thresholds, configuration, software version, and calculation output.</li><li>Material findings with supporting records and alternative explanations to investigate.</li><li>Candidate adverse-action reasons and the fields supporting or contradicting them.</li><li>Reviewer identity, review date, disposition, next action, and unresolved limitations.</li><li>An export manifest that lets another reviewer locate and reproduce the artifacts.</li></ul><p><a href="/sample-evidence-packet.pdf" data-sample-packet>Inspect Avarent's four-page synthetic example.</a></p></section>
+        <section id="sequence"><h2>A practical review sequence</h2><ol class="stage-list"><li><span>01</span><div><h3>Define one decision question</h3><p>Name the workflow, outcome, population, comparison, time window, and decision the review must support.</p></div></li><li><span>02</span><div><h3>Reproduce a baseline</h3><p>Confirm that the supplied inputs and agreed method reproduce a known measure within an accepted tolerance.</p></div></li><li><span>03</span><div><h3>Investigate material findings</h3><p>Review population design, sample size, inputs, policy context, reason codes, and plausible alternative explanations.</p></div></li><li><span>04</span><div><h3>Record the human decision</h3><p>Document what was concluded, what remains uncertain, who owns the next action, and when the finding will be revisited.</p></div></li></ol></section>
+        <section id="owners"><h2>Who should participate?</h2><div class="evidence-table"><div><strong>Compliance and fair lending</strong><span>Define the policy question, review implications, and own escalation.</span></div><div><strong>Model risk</strong><span>Challenge methodology, data, configuration, validation boundaries, and reproducibility.</span></div><div><strong>Lending and product</strong><span>Explain the workflow, policy intent, exceptions, and operational context.</span></div><div><strong>Data and engineering</strong><span>Verify source fields, transformations, versions, lineage, and access.</span></div><div><strong>Legal counsel</strong><span>Provide qualified legal interpretation when the facts require it.</span></div><div><strong>Security and procurement</strong><span>Review data handling, provider risk, contracting, retention, deletion, and exit.</span></div></div></section>
+        <section id="sources"><h2>Primary sources</h2><p>This guide is an operational framework, not legal advice. Review the underlying requirements and guidance directly:</p><div class="reference-list">${officialReferences.map((item) => `<a href="${item.href}" rel="noopener"><span><strong>${item.name}</strong><small>${item.owner}</small></span><p>${item.note}</p><b aria-hidden="true">↗</b></a>`).join("")}</div></section>
+      </div></article>`,
+  }),
+
+  "/glossary": layout({
+    title: "AI credit and fair-lending glossary | Avarent",
+    description: "Plain-language definitions for adverse impact ratio, statistical parity difference, evidence packets, synthetic-first reviews, and AI credit-decision oversight.",
+    path: "/glossary",
+    schemas: [{
+      "@context": "https://schema.org",
+      "@type": "DefinedTermSet",
+      name: "Avarent AI credit and fair-lending glossary",
+      url: `${site.url}/glossary`,
+      description: "Definitions used in Avarent's fair-lending evidence workflow.",
+      hasDefinedTerm: ["Adverse impact ratio", "Statistical parity difference", "Evidence packet", "Synthetic-first review", "Finding record", "Human review"].map((name) => ({ "@type": "DefinedTerm", name })),
+    }],
+    body: `<section class="page-hero shell"><p class="eyebrow">Plain-language definitions</p><h1>AI credit and fair-lending glossary.</h1><p>These definitions describe how Avarent uses common fair-lending, model-risk, and evidence-review terms. Institutional policy and qualified legal interpretation remain authoritative.</p><p class="updated">Reviewed ${site.contentUpdated}</p></section>
+      <article class="glossary shell" aria-label="Avarent glossary">
+        <dl class="glossary-list">
+          <div id="adverse-impact-ratio"><dt><dfn>Adverse impact ratio (AIR)</dfn></dt><dd>The favorable-outcome rate for a comparison group divided by the favorable-outcome rate for a reference group. A value below a configured screening threshold can prompt investigation, but does not establish cause or a legal conclusion by itself.</dd></div>
+          <div id="statistical-parity-difference"><dt><dfn>Statistical parity difference (SPD)</dfn></dt><dd>The comparison group's favorable-outcome rate minus the reference group's favorable-outcome rate. It expresses an absolute percentage-point gap and should be reviewed with sample size, uncertainty, and business context.</dd></div>
+          <div id="favorable-outcome-rate"><dt><dfn>Favorable-outcome rate</dfn></dt><dd>The share of an explicitly defined population receiving the favorable outcome under review, such as an approval. The numerator, denominator, exclusions, and time window must be documented.</dd></div>
+          <div id="comparison-group"><dt><dfn>Comparison group</dfn></dt><dd>The cohort whose outcome rate is compared with a documented reference group. Group definitions may depend on available, permitted, or institution-approved demographic attributes.</dd></div>
+          <div id="reference-group"><dt><dfn>Reference group</dfn></dt><dd>The cohort used as the denominator or baseline for a disparity comparison. Its selection can materially affect the result and should be documented rather than assumed.</dd></div>
+          <div id="review-threshold"><dt><dfn>Review threshold</dfn></dt><dd>A configured level that triggers additional investigation or human review. It is a workflow rule, not an automatic legal verdict.</dd></div>
+          <div id="adverse-action-reason-review"><dt><dfn>Adverse-action reason review</dfn></dt><dd>A check that stated reasons are accurate, specific, and supported by factors actually considered or scored in the decision. Avarent can organize candidate reasons and supporting fields for qualified human review.</dd></div>
+          <div id="finding-record"><dt><dfn>Finding record</dfn></dt><dd>A traceable record connecting a material result to its question, population, comparison, time window, configuration, supporting evidence, interpretation, reviewer, and next action.</dd></div>
+          <div id="evidence-packet"><dt><dfn>Evidence packet</dfn></dt><dd>A reproducible collection of scope, method, inputs, configuration, findings, reviewer actions, limitations, and exports assembled for internal or third-party review.</dd></div>
+          <div id="synthetic-first-review"><dt><dfn>Synthetic-first review</dfn></dt><dd>An evaluation that begins with representative synthetic or institution-approved de-identified data to test usefulness and evidence quality before production access is considered.</dd></div>
+          <div id="human-review"><dt><dfn>Human review</dfn></dt><dd>A documented decision by qualified staff who examine the result, context, uncertainty, and next action. Software can support the review but does not own the institution's decision authority.</dd></div>
+          <div id="model-risk-evidence"><dt><dfn>Model-risk evidence</dfn></dt><dd>Artifacts that help reviewers understand and challenge a model-related workflow, including data lineage, methodology, configuration, version context, validation boundaries, findings, limitations, and governance actions.</dd></div>
+        </dl>
+        <p class="glossary-source">For formulas, limitations, and regulatory references, see the <a href="/methodology">public methodology</a>.</p>
+      </article>`,
+  }),
+
+  "/about": layout({
+    title: "About Avarent | Fair-lending evidence for AI credit decisions",
+    description: "Avarent is an early-stage lending technology company building reviewable fair-lending and model-risk evidence for AI credit decisions.",
+    path: "/about",
+    body: `<section class="page-hero shell"><p class="eyebrow">About Avarent</p><h1>Make algorithmic lending decisions easier to inspect.</h1><p>Avarent is an early-stage lending technology company founded by George and Lucas. We help banks, credit unions, and lending fintechs turn credit-decision outputs into findings and evidence that compliance, model-risk, lending, security, and procurement teams can review.</p><p class="updated">Company information · reviewed ${site.contentUpdated}</p></section>
+      <article class="document shell"><nav class="document-nav" aria-label="About Avarent"><strong>Company</strong><a href="#product">Product</a><a href="#customers">Who it serves</a><a href="#engagement">First engagement</a><a href="#transparency">Transparency</a><a href="#contact">Contact</a></nav><div class="document-body">
+        <section id="product"><h2>What Avarent builds</h2><p>Avarent is an evaluation and evidence layer for AI and algorithmic credit decisioning. It measures outcome differences across documented cohorts, helps reviewers investigate material findings and candidate decision reasons, and preserves the scope, configuration, limitations, human actions, and exports behind the review.</p></section>
+        <section id="customers"><h2>Who Avarent serves</h2><p>Avarent is designed for credit unions, community banks, banks, and lending fintechs. The primary users and evaluators are fair-lending and compliance officers, model-risk teams, lending and product leaders, security reviewers, IT teams, and procurement staff.</p></section>
+        <section id="engagement"><h2>The first engagement</h2><p>The founding evaluation is a $2,500 fixed-scope review of one workflow and one agreed evaluation question. It targets delivery within ten business days after accepted inputs and includes a reproducible finding, evidence packet, exports, limitations, and stakeholder readout.</p><p><a href="/pilot">Review the current scope, deliverables, and commercial terms.</a></p></section>
+        <section id="transparency"><h2>Company transparency</h2><p>Avarent publishes its methodology, sample output, website data flow, service providers, security-review starting point, open assurance gaps, and credentials it does not claim. The trust center contains company-risk disclosures that do not belong in the main product pitch but remain available to evaluators.</p><p><a href="/trust">Inspect the trust center.</a></p></section>
+        <section id="contact"><h2>Contact Avarent</h2><div class="contact-directory"><a href="mailto:${site.emails.sales}?subject=Avarent%20evaluation"><strong>Sales</strong><span>${site.emails.sales}</span></a><a href="mailto:${site.emails.enterprise}?subject=Avarent%20enterprise%20review"><strong>Enterprise and procurement</strong><span>${site.emails.enterprise}</span></a><a href="mailto:${site.emails.security}?subject=Avarent%20security%20review"><strong>Security</strong><span>${site.emails.security}</span></a><a href="mailto:${site.emails.george}?cc=${site.emails.lucas}&subject=Avarent%20company%20question"><strong>Founders</strong><span>George and Lucas</span></a></div></section>
+      </div></article>`,
+  }),
+
   "/pilot": layout({
     title: "Avarent synthetic fair-lending review | Fixed-scope pilot",
     description: "Bring one lending evaluation question. Receive a reproducible finding, evidence packet, and stakeholder readout through a $2,500 synthetic-first review.",
     path: "/pilot",
+    schemas: [{
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${site.url}/pilot#service`,
+      name: "Avarent fixed-scope fair-lending evidence review",
+      url: `${site.url}/pilot`,
+      description: "A ten-business-day review of one lending workflow and one agreed evaluation question, delivered with a reproducible finding, evidence packet, exports, limitations, and stakeholder readout.",
+      provider: { "@id": `${site.url}/#organization` },
+      areaServed: { "@type": "Country", name: "United States" },
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Banks, credit unions, and lending fintechs",
+      },
+      offers: {
+        "@type": "Offer",
+        price: "2500",
+        priceCurrency: "USD",
+        url: `${site.url}/pilot`,
+        availability: "https://schema.org/InStock",
+        description: "Founding evaluation terms: 50% at written scope acceptance and 50% at delivery.",
+      },
+    }],
     body: `<section class="page-hero page-hero--conversion shell"><p class="eyebrow">Synthetic fair-lending evidence review</p><h1>One question. One evidence packet. Ten business days.</h1><p>Test whether Avarent produces evidence your compliance and model-risk teams can challenge and use, without replacing the decision model or beginning with production integration.</p><div class="button-row">${button("Inspect the sample output", "/sample-evidence-packet.pdf")}${button("Scope one question", "#request", "secondary")}</div><div class="offer-summary" aria-label="Fixed-scope review terms"><div><strong>Scope</strong><span>One workflow and one agreed evaluation question.</span></div><div><strong>Delivery</strong><span>Evidence packet and readout within 10 business days of accepted inputs.</span></div><div><strong>Founding evaluation terms</strong><span>$2,500 fixed during Avarent’s initial institutional evaluation period. Half at scope acceptance and half at delivery.</span></div></div></section>
       <section class="document shell"><div class="document-nav"><strong>Review terms</strong><a href="#stages">What happens</a><a href="#boundaries">Scope and deliverables</a><a href="#success">Success criteria</a><a href="#request">Scope a question</a></div><div class="document-body">
         <section id="stages"><h2>A finite review, with an exit at each stage.</h2><ol class="stage-list"><li><span>01</span><div><h3>Scope the question</h3><p>In a no-charge conversation, define one workflow, outcome, population, comparison, time window, and useful decision. Avarent returns the proposed method, minimum inputs, exclusions, and success criteria before requesting data or payment.</p><strong>Exit condition:</strong> the question or method is not a fit.</div></li><li><span>02</span><div><h3>Run the evidence review</h3><p>Use one synthetic or institution-approved de-identified extract. Avarent documents the configuration, reproduces the agreed measures, records findings, and makes limitations visible.</p><strong>Exit condition:</strong> the inputs are unsuitable or the output is not reproducible.</div></li><li><span>03</span><div><h3>Deliver and decide</h3><p>Receive the evidence packet, agreed exports, and a 45-minute stakeholder readout. Your team decides whether a limited next-stage pilot is justified.</p><strong>Exit condition:</strong> delivery completes the review; expansion is never automatic.</div></li></ol></section>
@@ -138,6 +253,19 @@ export const pages = {
     title: "Avarent methodology | Fair-lending measurement and limitations",
     description: "Review Avarent's measurement concepts, adverse impact ratio and statistical parity definitions, interpretation boundaries, and official references.",
     path: "/methodology",
+    schemas: [{
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: "Avarent fair-lending measurement methodology",
+      description: "Measurement concepts, adverse impact ratio and statistical parity definitions, interpretation boundaries, and official references used by Avarent.",
+      author: { "@id": `${site.url}/#organization` },
+      publisher: { "@id": `${site.url}/#organization` },
+      datePublished: "2026-08-12",
+      dateModified: site.contentUpdated,
+      mainEntityOfPage: `${site.url}/methodology`,
+      about: ["Adverse impact ratio", "Statistical parity difference", "Fair lending", "Adverse action reasons"],
+      citation: officialReferences.map((item) => item.href),
+    }],
     body: `<section class="page-hero shell"><p class="eyebrow">Public methodology</p><h1>Measurements are evidence, not verdicts.</h1><p>Avarent’s outputs are intended to support investigation and qualified review. A metric crossing a threshold is a prompt to examine context, not a standalone legal conclusion.</p><p class="updated">Methodology overview · version 1.0 · August 12, 2026</p></section>
       <section class="document shell"><div class="document-nav"><strong>Contents</strong><a href="#air">Adverse impact ratio</a><a href="#spd">Statistical parity difference</a><a href="#reasons">Decision reasons</a><a href="#limits">Limitations</a><a href="#references">References</a></div><div class="document-body">
         <section id="air"><h2>Adverse impact ratio</h2><p>The adverse impact ratio compares a selected group’s favorable-outcome rate with a reference group’s rate.</p><div class="formula"><span>AIR</span><strong>comparison-group favorable outcome rate</strong><i>÷</i><strong>reference-group favorable outcome rate</strong></div><p>A four-fifths or 0.80 threshold can be used as a screening convention. It does not, by itself, establish unlawful discrimination. Population definition, sample size, selection of reference group, policy context, and statistical uncertainty matter.</p></section>

@@ -1,7 +1,9 @@
 export const site = {
   name: "Avarent",
   url: "https://avarent.app",
+  contentUpdated: "2026-08-13",
   email: "george@avarent.app",
+  founders: ["George", "Lucas"],
   emails: {
     george: "george@avarent.app",
     lucas: "lucas@avarent.app",
