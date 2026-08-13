@@ -6,7 +6,7 @@ Checked August 12, 2026.
 
 - Inbound mail uses Zoho (`mx.zoho.com`, `mx2.zoho.com`, and `mx3.zoho.com`).
 - Root SPF exists: `v=spf1 include:zohomail.com ~all`.
-- No DMARC TXT record was returned at `_dmarc.avarent.app`.
+- DMARC is published in monitoring mode: `v=DMARC1; p=none;`.
 - No Resend DKIM record was returned at `resend._domainkey.avarent.app`.
 
 ## Safe setup sequence
@@ -15,7 +15,7 @@ Checked August 12, 2026.
 2. Add `avarent.app` or a deliberate sending subdomain in the Resend Domains dashboard.
 3. Copy Resend's generated SPF, DKIM, and return-path records exactly. Do not guess record names or values.
 4. Confirm the Resend domain reports `verified` before enabling production form delivery.
-5. Add a monitoring DMARC record at `_dmarc.avarent.app`:
+5. Keep the monitoring DMARC record at `_dmarc.avarent.app`; optionally add aggregate reporting when DNS access is available:
 
    `v=DMARC1; p=none; rua=mailto:security@avarent.app;`
 

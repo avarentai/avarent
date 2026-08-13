@@ -10,7 +10,7 @@
 
 ## Email delivery
 
-- [ ] Follow `DNS_EMAIL_SETUP.md`; current DNS has Zoho SPF but no published DMARC or detected Resend DKIM record.
+- [ ] Follow `DNS_EMAIL_SETUP.md`; Zoho SPF and monitoring-mode DMARC are published, and the Resend domain is verified.
 - [ ] Verify `avarent.app` as a sending domain in Resend.
 - [ ] Publish the provider's SPF and DKIM records.
 - [ ] Publish a DMARC policy and reporting address appropriate for the domain.

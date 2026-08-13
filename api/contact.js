@@ -24,8 +24,8 @@ export default async function handler(request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL || "sales@avarent.app";
-  const from = process.env.CONTACT_FROM_EMAIL;
-  if (!apiKey || !to || !from) return Response.json({ error: "Form delivery is not configured." }, { status: 503 });
+  const from = process.env.CONTACT_FROM_EMAIL || "Avarent <sales@avarent.app>";
+  if (!apiKey) return Response.json({ error: "Form delivery is not configured." }, { status: 503 });
 
   const text = [
     `Source: ${data.source}`,
