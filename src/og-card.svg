@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Avarent</title>
+  <desc id="description">Fair-lending evidence for AI credit decisions.</desc>
+  <rect width="1200" height="630" fill="#f4f7f8"/>
+  <g stroke="#ccd7dc" stroke-width="1" opacity="0.58">
+    <path d="M0 105h1200M0 210h1200M0 315h1200M0 420h1200M0 525h1200"/>
+    <path d="M100 0v630M200 0v630M300 0v630M400 0v630M500 0v630M600 0v630M700 0v630M800 0v630M900 0v630M1000 0v630M1100 0v630"/>
+  </g>
+  <g transform="translate(70 62)">
+    <g transform="scale(1.15)" fill="none" stroke="#203641" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5H8a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h3M21 5h3a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3h-3"/>
+      <path d="m16 11 5 5-5 5-5-5 5-5Z" fill="#5d56cc" stroke="none"/>
+    </g>
+    <text x="48" y="28" fill="#203641" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Avarent</text>
+  </g>
+  <text x="70" y="200" fill="#5148b8" font-family="Courier New, monospace" font-size="17" font-weight="700" letter-spacing="2">FAIR-LENDING OVERSIGHT FOR ALGORITHMIC CREDIT</text>
+  <text x="70" y="292" fill="#203641" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-3">Find decision risk before it</text>
+  <text x="70" y="370" fill="#203641" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-3">becomes an examination problem.</text>
+  <g transform="translate(70 470)">
+    <rect width="1060" height="93" rx="12" fill="#1d3340"/>
+    <text x="28" y="39" fill="#f4f7f8" font-family="Courier New, monospace" font-size="16">SYNTHETIC-FIRST EVALUATION</text>
+    <text x="28" y="68" fill="#b8c6cc" font-family="Arial, Helvetica, sans-serif" font-size="19">No model replacement · Human review stays in control · Limitations documented</text>
+    <circle cx="1015" cy="46" r="8" fill="#71a99c"/>
+  </g>
+</svg>
