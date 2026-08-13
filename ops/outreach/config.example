@@ -1,0 +1,16 @@
+# Copy to .env.outreach and keep it local. Do not commit secrets.
+ZOHO_CLIENT_ID=
+ZOHO_CLIENT_SECRET=
+ZOHO_REFRESH_TOKEN=
+ZOHO_ACCOUNT_ID=
+ZOHO_FROM_EMAIL=george@avarent.app
+
+# Change both hosts if your Zoho account uses another data center (.eu, .in, .com.au, etc.).
+ZOHO_ACCOUNTS_BASE=https://accounts.zoho.com
+ZOHO_MAIL_BASE=https://mail.zoho.com/api
+
+OUTREACH_SENDER_NAME=George
+OUTREACH_DAILY_DRAFT_CAP=8
+OUTREACH_FOLLOWUP_1_BUSINESS_DAYS=4
+OUTREACH_FOLLOWUP_2_BUSINESS_DAYS=7
+

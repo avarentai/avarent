@@ -7,7 +7,14 @@
     "build": "node scripts/build_sample_pdf.mjs && node scripts/build.mjs",
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "start": "node scripts/serve.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "outreach:check": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs check",
+    "outreach:preview": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs preview",
+    "outreach:accounts": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs accounts",
+    "outreach:sync": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs sync",
+    "outreach:drafts": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs drafts",
+    "outreach:followups": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs followups",
+    "outreach:run": "node --env-file-if-exists=.env.outreach ops/outreach/zoho-outreach.mjs run"
   },
   "dependencies": {
     "@fontsource-variable/public-sans": "^5.3.0",

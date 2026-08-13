@@ -30,3 +30,9 @@ See `.env.example` for the expected names. If analytics is not configured, `/api
 - Only anonymous, allowlisted conversion events are forwarded. Form values are never included in analytics.
 - The `diligence/` templates convert qualified interest into a scoped, reviewable pilot without requiring a CRM or newsletter.
 - Use `LAUNCH_CHECKLIST.md` for the one-time production and domain steps.
+
+## Commercial operations
+
+- `ops/OFFER.md` defines the fixed-scope synthetic fair-lending evidence review.
+- `ops/outreach/` contains the Zoho Mail draft-first outreach assistant and lead tracker.
+- The outreach tool creates drafts and detects sent messages or replies; it has no send-email command.
